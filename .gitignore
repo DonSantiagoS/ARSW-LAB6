@@ -2,6 +2,8 @@
 angular-seed/node_modules
 angular-seed/dist/
 
+.Ds_Store
+
 # Created by https://www.gitignore.io/api/node,gradle,intellij+all
 
 ### Intellij+all ###
