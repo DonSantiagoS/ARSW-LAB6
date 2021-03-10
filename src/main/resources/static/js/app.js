@@ -1,44 +1,73 @@
+var mock = apimock;
+var app = (function(){
 
-var Controlador = (function(){
-    
-    var getBlueprints = function(){
-        
-        var authorName = document.getElementById("authorName").value;        
-        var authorUrl = "http://localhost:8080/blueprints/" + authorName;
-        fetch(authorUrl)
-                .then(response => response.json())
-                .then(json => dataTable(json,authorName))
-                .catch(err => {
-                   console.log(err); 
-                });
-    };
-    
-    var dataTable = function(res, author){
-        
-        var dataMap = new Map();
-        var TotalPoints = 0;
-        
-        for(var i in res){
-            var name = res[i].name;
-            var numeroDePuntos = Object.keys(res[i].points).length;
-            TotalPoints = TotalPoints+numeroDePuntos;
-            dataMap.set(name,numeroDePuntos);
-            console.log(name+" "+numeroDePuntos);
-        }
-
-         $("#tabla").empty();
-        $("#lblName").text(author+"'s blueprints:");
-        var fila= "<tr><th>Blueprints name</th><th>Number of points</th><th>Open</th></tr>";
-         $("#tabla").append(fila);
-        for(var[clave, valor] of dataMap){
-            fila = "<tr> <td>"+ clave + "</td> <td>"+valor+"</td> </tr>";
-            $("#tabla").append(fila);
-        }
-        $("#lblPoints").text("Total user points: "+TotalPoints);   
-    };
-    
-    return{
-        getBlueprints: getBlueprints
-    };
-    
+	var mapeo = function(lista){
+		return mapped = lista.map(function(blueprint){
+			return {name:blueprint.name, pts:blueprint.points.length};
+			
+		})
+	}
+	var table = function(bps){
+		
+		if(bps === undefined){
+			alert("Author does not exist");
+		}else{
+			bps = mapeo(bps);
+			var r = bps.reduce(function(a, b){
+				
+                return a.pts + b.pts;
+            })
+		
+		$("#totalPoints").text("Total points: " + r);
+		var vpname = "Blueprint name";
+		var nop = "Number of points";
+		var ac  = "Action";
+		$("#tabla tbody").empty();
+		var temp = null;
+		var markup = null;
+		mapped.map(function(bp){
+			
+			if(temp == null){
+				markup = '<tr><th>'+vpname+'</th><th>'+nop+'</th><th>'+ac+'</th></tr><tr><th>'+bp.name+'</th><th>'+bp.pts+'</th><th type="button" onclick="app.draw(\''+bp.name+'\')">Open</th></tr>';
+				temp = "a";
+			}else{
+				markup = '<tr><th>'+bp.name+'</th><th>'+bp.pts+'</th><th type="button" onclick="app.draw(\''+bp.name+'\')">Open</th></tr>';
+			}
+			$("table > tbody").append(markup);
+		});
+		}
+		
+	}
+	var queue = function(author){
+		mock.getBlueprintsByAuthor(author, table);
+	}
+	
+	
+	var drawCanvas = function(blueprint){
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			var dx = null;
+			var dy = null;
+			ctx.clearRect(0, 0, 500, 300);
+			ctx.beginPath();
+			blueprint.points.map(function(point){
+				if(dx == null){
+					dx = point.x;
+					dy = point.y;
+					ctx.moveTo(dx, dy);
+				}else{
+					ctx.lineTo(point.x, point.y);
+				}
+			});
+			ctx.stroke();
+	}
+	
+	return{
+		queue : queue,
+		draw : function(name){
+			author = document.getElementById("authorInput").value;
+			mock.getBlueprintsByNameAndAuthor(name,author,drawCanvas);
+		}
+	};
+	
 })();

@@ -13,6 +13,7 @@ and open the template in the editor.
     <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
     <script src="js/apimock.js"></script>
+    <script src="js/apiclient.js"></script>
     <script src="js/app.js"></script>
     <link rel="stylesheet"
       href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
@@ -21,6 +22,10 @@ and open the template in the editor.
         <h1>
             BluePrints
         </h1>
+        <a><font size=6>Author: <input type="text" id="authorInput" value="Write an author here"><button type="button" class="favorite styled" id="getBluePrints" onclick="app.queue(authorInput.value);">Get Blueprints</button></font></a> 
+        <div id="ca">
+            <canvas id="myCanvas" width="500" height="300" style="border:1px solid #000000;"></canvas>
+        </div> 
         <input type="text">
         <input type="button" value="GETBLUEPRINTS">
         <table>

@@ -2,97 +2,97 @@ var apimock = (function () {
 
     var mockdata = [];
 
-    mockdata["JhonConnor"] = [
+    mockdata["DallasMcgregor"] = [
         {
-            author: "JhonConnor",
-            name: "house",
+            author: "DallasMcgregor",
+            name: "home",
             points: [
-                {
-                    x: 10,
-                    y: 20
-                },
                 {
                     x: 15,
                     y: 25
                 },
                 {
-                    x: 45,
-                    y: 25
+                    x: 20,
+                    y: 30
+                },
+                {
+                    x: 55,
+                    y: 35
                 }
             ]
         },
         {
-            author: "JhonConnor",
-            name: "bike",
+            author: "DallasMcgregor",
+            name: "car",
             points: [
-                {
-                    x: 30,
-                    y: 35
-                },
                 {
                     x: 40,
                     y: 45
+                },
+                {
+                    x: 50,
+                    y: 55
                 }
             ]
         }
     ]
-    mockdata['Jose'] = [
+    mockdata['Rigo'] = [
 	      {
-	          author: 'Jose',
-	          name: 'subway',
+	          author: 'Rigo',
+	          name: 'train',
 	          points: [
 	              {
-	                  x: 5,
-	                  y: 10
+	                  x: 15,
+	                  y: 20
 	              },
 	              {
-	                  x: 30,
-	                  y: 35
+	                  x: 40,
+	                  y: 45
 	              }
 	          ]
 	      },
 		  {
-	          author: 'Jose',
-	          name: 'another',
+                    author: 'Rigo',
+	          name: 'other',
 	          points: [
 	              {
-	                  x: 55,
-	                  y: 10
+	                  x: 65,
+	                  y: 20
 	              },
 	              {
-	                  x: 37,
-	                  y: 25
+	                  x: 47,
+	                  y: 35
 	              }
 	          ]
 	      }
 	  ]
 	
-	mockdata['Daniel'] = [
+	mockdata['Ramiro'] = [
 	      {
-	          author: 'Daniel',
-	          name: 'building',
+	          author: 'Ramiro',
+	          name: 'apartament',
 	          points: [
 	              {
-	                  x: 5,
-	                  y: 10
-	              },
-	              {
-	                  x: 30,
-	                  y: 35
+	                  x: 15,
+	                  y: 20
 	              },
 	              {
 	                  x: 40,
-	                  y: 20
+	                  y: 45
+	              },
+	              {
+	                  x: 50,
+	                  y: 30
 	              }
 	          ]
 	      },
 		  {
-	          author: 'Daniel',
-	          name: 'anotherBuilding',
+	          author: 'Ramiro',
+	          name: 'otherApartament',
 	          points: [
 	              {
-	                  x: 5,
-	                  y: 10
+	                  x: 25,
+	                  y: 20
 	              }
 	          ]
 	      }
