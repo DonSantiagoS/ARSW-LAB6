@@ -42,7 +42,6 @@ var app = (function(){
 		mock.getBlueprintsByAuthor(author, table);
 	}
 	
-	
 	var drawCanvas = function(blueprint){
 			var c = document.getElementById("myCanvas");
 			var ctx = c.getContext("2d");
